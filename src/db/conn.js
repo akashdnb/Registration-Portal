@@ -6,7 +6,6 @@ const conn_string = process.env.CONN_STRING;
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true, 
-      autoIndex: true, 
      }).then(()=>{
       console.log('connected to database!!')
      }).catch((e)=>{
