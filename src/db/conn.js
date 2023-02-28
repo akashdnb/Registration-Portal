@@ -5,6 +5,8 @@ const conn_string = process.env.CONN_STRING;
     mongoose.connect(conn_string , {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true, 
+      autoIndex: true, 
      }).then(()=>{
       console.log('connected to database!!')
      }).catch((e)=>{
