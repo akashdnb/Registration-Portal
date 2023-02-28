@@ -6,7 +6,7 @@ const hbs = require('hbs')
 require('dotenv').config()
 require('../src/db/conn')
 const studentRoute = require('./routers/studentRoute');
-app.use(express.static(path.resolve('./public')));
+app.use(express.static(path.resolve('./assets')));
 
 const port= process.env.PORT || 3000;
 //app.set('views', path.join(__dirname))
