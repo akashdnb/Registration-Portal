@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0 20px;
+        background-color: aliceblue;
+    }
+    h2{
+        text-align: center;
+        padding: 20pt;
+    }
+</style>
+<body>
+
+    <h2>Student details</h2>
+
+    <div class="filter" style="display: flex;"></div>
+       <form action="/list" method="get">
+       <input type="hidden" name="pass", value="akash">
+         <select name="branch" aria-label="Default select example" required>
+                    <option value="CSE" selected>Computer Science Engineering</option>
+                    <option value="ECE">Electronics and Communication Engineering</option>
+                    <option value="EE">Electrical Engineering</option>
+                    <option value="ME">Mechanical Engineering</option>
+                    <option value="CE">Civil Engineering</option>
+                    <option value="MME">Metallurgical Engineering</option>
+                    <option value="PI">Production Engineering</option>
+                    <option value="ECE">Electronics and Computational Mechanics</option>
+                  </select>
+       <button type="submit" >Filter Branch</button>
+       </form>
+
+      <form action="/list" method="get" style="margin-top: 10pt;">
+       <input type="hidden" name="pass", value="akash">
+       <input type="text" name="registrationNo" placeholder="registrationNo">
+       <button type="submit" >Search</button>
+    </form>
+    </div>
+    
+
+    <table class="table caption-top">
+  <caption ></caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Registration No.</th>
+      <th scope="col">Mobile no</th>
+      <th scope="col">Branch</th>
+      <th scope="col">Interested In</th>
+      <th scope="col">Orientation</th>
+      <th scope="col" >Resume</th>
+      <th scope="col">Status</th>
+      <th scope="col">Panel</th>
+    </tr>
+  </thead>
+
+  <tbody id="trows">
+
+      {{#each data}} 
+      <tr>
+        <th scope="row">{{@index}}</th>
+        <td> {{firstName}} {{lastName}}</td>
+        <td><a href="/list?pass=akash&registrationNo={{registrationNo}}" target="_blank" >{{registrationNo}}</a></td>
+        <td> {{phoneNo}}</td>
+        <td> {{branch}}</td>
+        <td> {{interestedIn}}</td>
+        <td> {{attendedOrientation}}</td>
+        <td><a href="/resume/?path={{resume}}" target="_blank" >Resume</a> </td>
+        <td>--</th>
+        <td>--</th>
+      </tr>
+   {{/each}} 
+
+  </tbody>
+</table>
+
+<script id="basic-template1" type="text/x-handlebars-template">    
+    <div> hiii </div>    
+</script>
+
+
+</body>
+<script>
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</html>
