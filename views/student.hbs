@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration Form</title>
+    <link rel="icon" href="/images/Drift_Racing_Team_logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+     <div class="updated" style="background-color:rgb(174, 239, 174); text-align:center; margin-top:10pt">
+        {{updated}}</div>
+
+    {{#each data}}
+    <section style="background-color: rgb(66, 142, 209);" class="container my-2 bg-primary w-50 text-light p-2">
+        
+        <form style="background-color: rgb(66, 142, 209);" class="row g-3 p-3" action="/update" method="post">
+        <input type="hidden" name="pass", value="akash">
+        <input type="hidden" name="_id", value="{{_id}}">
+            <div class="col-md-4">
+                <label for="validationCustom01" class="form-label " >First name* : </label>
+                <input type="text" name="firstName" class="form-control" id="validationCustom01"  value="{{firstName}}" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Last name* : </label>
+                <input type="text" name="lastName" class="form-control" id="validationCustom02" value="{{lastName}}" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="inputregistration" class="form-label">Registration No.* : </label>
+                <input type="text" name="registrationNo" class="form-control" id="inputregistration" value="{{registrationNo}}" required>
+              </div>
+              <div class="col-md-6">
+                <label for="inputtele" class="form-label">Phone No.* : </label>
+                <input type="tel" name="phoneNo" class="form-control" id="inputtele" value="{{phoneNo}}" required>
+              </div>
+              <div class="col-md-6">
+                <label for="select" class="form-label">Branch* : </label>
+                <select name="branch" class="form-select" aria-label="Default select example" required>
+                    <option value="{{branch}}">PREVIOUS: {{branch}}</option>
+                    <option value="CSE">Computer Science Engineering</option>
+                    <option value="ECE">Electronics and Communication Engineering</option>
+                    <option value="EE">Electrical Engineering</option>
+                    <option value="ME">Mechanical Engineering</option>
+                    <option value="CE">Civil Engineering</option>
+                    <option value="MME">Metallurgical Engineering</option>
+                    <option value="PI">Production Engineering</option>
+                    <option value="ECE">Electronics and Computational Mechanics</option>
+                  </select>
+            </div>
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Email* : </label>
+              <input name="email" value="{{email}}" type="email" class="form-control" id="inputEmail4" required >
+            </div>
+            <div class="col-md-6">
+                <label for="select" class="form-label">Department Intrested : </label>
+                <select name="interestedIn" class="form-select" aria-label="Default select example" required>
+                    <option selected value="{{interestedIn}}">PREVIOUS: {{interestedIn}}</option>
+                    <option value="TECHNICAL">TECHNICAL</option>
+                    <option value="CREATIVE">CREATIVE</option>
+                    <option value="WEB TEAM">WEB TEAM</option>
+                  </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="select" class="form-label">Attended orientation?</label>
+                <select name="attendedOrientation" class="form-select" aria-label="Default select example" required>
+                    <option selected value="{{attendedOrientation}}">PREVIOUS: {{attendedOrientation}}</option>
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                  </select>
+            </div>
+
+             <div class="col-md-6">
+                <label for="select" class="form-label">PI-1 Panel</label>
+                <select name="pi1Panel" class="form-select" aria-label="Default select example">
+                    <option selected value="{{pi1Panel}}">PREVIOUS: {{pi1Panel}}</option>
+                    <option value="PANEL_1">PANEL 1</option>
+                    <option value="PANEL_2">PANEL 2</option>
+                    <option value="PANEL_3">PANEL 3</option>
+                    <option value="PANEL_4">PANEL 4</option>
+                    <option value="PANEL_5">PANEL 5</option>
+                  </select>
+            </div>
+
+             <div class="col-md-6">
+                <label for="select" class="form-label">PI-2 Panel</label>
+                <select name="pi2Panel" class="form-select" aria-label="Default select example">
+                    <option selected value="{{pi2Panel}}">PREVIOUS: {{pi2Panel}}</option>
+                     <option value="PANEL_1">PANEL 1</option>
+                    <option value="PANEL_2">PANEL 2</option>
+                    <option value="PANEL_3">PANEL 3</option>
+                    <option value="PANEL_4">PANEL 4</option>
+                    <option value="PANEL_5">PANEL 5</option>
+                  </select>
+            </div>
+            
+
+            <div class="form-check form-switch">
+              <label class="form-check-label" for="flexSwitchCheckDefault">test Cleared </label>
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="testResult" value="checked" {{testResult}}>
+            </div>
+
+             <div class="form-check form-switch">
+              <label class="form-check-label">PI1 cleared</label>
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="pi1" value="checked" {{pi1}}>
+            </div>
+
+             <div class="form-check form-switch">
+              <label class="form-check-label" >PI2 cleared</label>
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="pi2" value="checked" {{pi2}}>
+            </div>
+          
+            <span style="text-align:end;" class="col-md-6">
+              <button type="Submit" class="btn btn-dark">Update</button>
+            </span>
+          </form>
+
+          <form style="text-align:end;" action="/delete" method="post">
+          <input type="hidden" name="pass" value="akash">
+          <input type="hidden" name="registrationNo" value="{{registrationNo}}">
+          <input type="hidden" name="_id" value="{{_id}}">
+          <input type="hidden" name="resume" value="{{resume}}">
+          <button type="submit"class="btn btn-dark" >Delete</button>
+          </form>
+          
+    </section>
+    {{/each}}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -19,13 +19,36 @@
 </style>
 <body>
 
-    <h2>Student details</h2>
+  <h2>Student details</h2>
 
-    <div class="filter" style="display: flex;"></div>
-       <form action="/list" method="get">
-       <input type="hidden" name="pass", value="akash">
-         <select name="branch" aria-label="Default select example" required>
-                    <option value="CSE" selected>Computer Science Engineering</option>
+<!-- Button trigger modal -->
+<div style="text-align:center;">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Edit Filters
+</button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Apply Filters</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <section>
+          <form action="/list" method="get">
+          <input type="hidden" name="pass", value="akash">
+          <div class="col-md-6">
+                <label for="select" class="form-label">Branch: </label>
+                <select name="branch" class="form-select" aria-label="Default select example">
+                    <option value="{{branch}}">{{branch}}</option>
+                    <option value="">none</option>
+                    <option value="CSE">Computer Science Engineering</option>
                     <option value="ECE">Electronics and Communication Engineering</option>
                     <option value="EE">Electrical Engineering</option>
                     <option value="ME">Mechanical Engineering</option>
@@ -34,18 +57,73 @@
                     <option value="PI">Production Engineering</option>
                     <option value="ECE">Electronics and Computational Mechanics</option>
                   </select>
-       <button type="submit" >Filter Branch</button>
-       </form>
+            </div>
+            <div class="col-md-6" style="margin-top: 10dt;">
+                <label for="select" class="form-label">PI-1 Panel</label>
+                <select name="pi1Panel" class="form-select" aria-label="Default select example">
+                    <option selected value="{{pi1Panel}}">{{pi1Panel}}</option>
+                    <option value="">none</option>
+                    <option value="PANEL_1">PANEL 1</option>
+                    <option value="PANEL_2">PANEL 2</option>
+                    <option value="PANEL_3">PANEL 3</option>
+                    <option value="PANEL_4">PANEL 4</option>
+                    <option value="PANEL_5">PANEL 5</option>
+                  </select>
+            </div>
 
+             <div class="col-md-6" style="margin-top: 10dt;">
+                <label for="select" class="form-label"> PI-2 Panel</label>
+                <select name="pi2Panel" class="form-select" aria-label="Default select example">
+                    <option selected value="{{pi2Panel}}">{{pi2Panel}}</option>
+                    <option value="">none</option>
+                     <option value="PANEL_1">PANEL 1</option>
+                    <option value="PANEL_2">PANEL 2</option>
+                    <option value="PANEL_3">PANEL 3</option>
+                    <option value="PANEL_4">PANEL 4</option>
+                    <option value="PANEL_5">PANEL 5</option>
+                  </select>
+            </div>
+
+            
+            <div class="form-check form-switch">
+              <label class="form-check-label" for="flexSwitchCheckDefault">test Cleared </label>
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="testResult" value="checked" {{testResult}}>
+            </div>
+
+             <div class="form-check form-switch">
+              <label class="form-check-label">PI1 cleared</label>
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="pi1" value="checked" {{pi1}}>
+            </div>
+
+             <div class="form-check form-switch">
+              <label class="form-check-label" >PI2 cleared</label>
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="pi2" value="checked" {{pi2}}>
+            </div>
+
+            <button style="margin-top: 20pt;" type="submit" class="btn btn-primary">Apply Filters</button>
+
+          </form>
+        </section>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="search" style="display: flex;"></div>
       <form action="/list" method="get" style="margin-top: 10pt;">
        <input type="hidden" name="pass", value="akash">
-       <input type="text" name="registrationNo" placeholder="registrationNo">
+       <input type="text" name="registrationNo" value="{{registrationNo}}" placeholder="registrationNo">
        <button type="submit" >Search</button>
     </form>
     </div>
     
 
-    <table class="table caption-top">
+    <table class="table caption-top" style="margin-right: 10pt;">
   <caption ></caption>
   <thead>
     <tr>
@@ -54,11 +132,12 @@
       <th scope="col">Registration No.</th>
       <th scope="col">Mobile no</th>
       <th scope="col">Branch</th>
-      <th scope="col">Interested In</th>
-      <th scope="col">Orientation</th>
       <th scope="col" >Resume</th>
-      <th scope="col">Status</th>
-      <th scope="col">Panel</th>
+      <th scope="col">Test Results</th>
+      <th scope="col">PI-1 Panel</th>
+      <th scope="col">PI-1 Result</th>
+      <th scope="col">PI-2 Panel</th>
+      <th scope="col">PI-2 Results</th>
     </tr>
   </thead>
 
@@ -67,29 +146,25 @@
       {{#each data}} 
       <tr>
         <th scope="row">{{@index}}</th>
-        <td> {{firstName}} {{lastName}}</td>
-        <td><a href="/list?pass=akash&registrationNo={{registrationNo}}" target="_blank" >{{registrationNo}}</a></td>
-        <td> {{phoneNo}}</td>
+        <td style="max-width: 5%;"> {{firstName}} {{lastName}}</td>
+        <td style="max-width: 5%;"><a href="/student?pass=akash&registrationNo={{registrationNo}}" target="_blank" >{{registrationNo}}</a></td>
+        <td style="max-width: 5%;"> {{phoneNo}}</td>
         <td> {{branch}}</td>
-        <td> {{interestedIn}}</td>
-        <td> {{attendedOrientation}}</td>
         <td><a href="/resume/?path={{resume}}" target="_blank" >Resume</a> </td>
-        <td>--</th>
-        <td>--</th>
+        <td>{{testResult}}</td>
+        <td>{{pi1Panel}}</td>
+        <td>{{pi1}}</td>
+        <td>{{pi2Panel}}</td>
+        <td>{{pi2}}</td>
       </tr>
    {{/each}} 
 
   </tbody>
 </table>
-
-<script id="basic-template1" type="text/x-handlebars-template">    
-    <div> hiii </div>    
-</script>
-
-
 </body>
-<script>
 
-</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </html>

@@ -36,5 +36,6 @@ route.get('/list',  registrationController.student_list);
 route.post('/update', registrationController.update_student);
 route.post('/delete', registrationController.delete_student);
 route.get('/search', registrationController.search_student);
+route.get('/student', registrationController.student_details);
 
 module.exports = route;

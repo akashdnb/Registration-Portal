@@ -6,7 +6,8 @@ const hbs = require('hbs')
 require('dotenv').config()
 require('../src/db/conn')
 const studentRoute = require('./routers/studentRoute');
-app.use(express.static(path.resolve('./assets')));
+const { enable } = require('./routers/studentRoute');
+app.use(express.static(path.resolve('./public')));
 
 const port= process.env.PORT || 3000;
 //app.set('views', path.join(__dirname))
@@ -36,3 +37,6 @@ app.get('/register', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`Listining to port: ${port}`);
 });
+
+
+//https://inductions2022.onrender.com/
