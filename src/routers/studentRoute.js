@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
         });
     },
     filename: (req, file, cb)=>{
-        const name = Date.now()+ '-' +file.originalname;
+        const name = req.body.registrationNo+'-'+ Date.now()+ '.pdf';
         cb(null, name, (error, success)=>{
             if(error) throw error;
         })

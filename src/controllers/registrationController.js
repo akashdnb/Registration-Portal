@@ -1,9 +1,10 @@
  const Student = require('../models/studentModel');
  const fs = require('fs');
  const path = require('path');
+ var request = require('request');
 
  const register_student = async(req,res)=>{
-   
+    
     try{
         const student = new Student({
             firstName: req.body.firstName,
@@ -23,8 +24,17 @@
             pi2Panel:'',
             resume: req.file.filename
         })
-
-            await student.save()
+        const filepath= path.join(__dirname, '../../public/studentResume',req.file.filename);
+        var options = {
+            'method': 'POST',
+            'url': 'https://firebasestorage.googleapis.com/v0/b/indictions2k22.appspot.com/o/'+
+               req.file.filename+'?uploadType=media',
+            'headers': {
+              'Content-Type': 'application/pdf'
+            },
+            body: fs.createReadStream(filepath)
+          };
+           var saveStudent= await student.save()
             .then(studentData=>{
                 res.status(200).send({
                     message: "Registered successfully!",
@@ -36,7 +46,22 @@
             }).catch(error =>{
                 res.send(error.message)
             });
-        
+
+            request(options, function (error, response) {
+                if (error){
+                    res.send(error.message);
+                    throw new Error(error);
+                }
+                //student.resume= response.name+'?alt=media&token='+response.downloadTokens;
+                try{
+                    const filePath = path.join(__dirname,'../../public/studentResume/', req.file.filename);
+                    fs.unlink(filePath, (error)=>{
+                        if(error) console.log(error);
+                    });
+                }catch(error){
+                }
+                saveStudent;
+              });
 
     } catch(error){
         console.log(error);
@@ -125,10 +150,10 @@
         .then(()=>{
             try{
                 fs.unlink(filePath, (error)=>{
-                    if(error) console.log(error);
+                    //if(error) console.log(error);
                 });
             }catch(error){
-                console.log(error)
+                //console.log(error)
             }
             res.send({
                 message: 'deleted'

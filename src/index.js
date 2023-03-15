@@ -24,10 +24,8 @@ app.get('/display', (req, res)=>{
 })
 
 app.get('/resume', (req,res)=>{
-  const filepath= path.join(__dirname, '../public/studentResume',req.query.path);
-  var data =fs.readFileSync(filepath);
-  res.contentType("application/pdf");
-  res.send(data);
+  const filepath = 'https://firebasestorage.googleapis.com/v0/b/indictions2k22.appspot.com/o/'+req.query.path+ '?alt=media';
+  res.redirect(filepath);
 })
 
 app.get('/register', (req, res)=>{
