@@ -37,13 +37,11 @@
           };
            var saveStudent= await student.save()
             .then(studentData=>{
-                res.status(200).send({
-                    message: "Registered successfully!",
-                    data: {
-                        firstName: studentData.firstName,
-                        lastName: studentData.lastName,
-                        resume: studentData.resume,
-                    }           
+                res.render('registration_successful',{
+                    message: 'Registration Successful!!',
+                    firstName: studentData.firstName,
+                    lastName: studentData.lastName,
+                    registrationNo: studentData.registrationNo,
                 })
             }).catch(error =>{
                 res.send(error.message)
@@ -121,13 +119,12 @@
         var obj = req.body;
         delete obj.pass;
 
-        if(obj.pi1== undefined) obj.pi1='';
-        if(obj.p21== undefined) obj.pi2='';
-        if(obj.testResult== undefined) obj.testResult='';
+        if(obj.pi1!= 'checked') obj.pi1='';
+        if(obj.pi2!= 'checked') obj.pi2='';
+        if(obj.testResult!= 'checked') obj.testResult='';
 
         await Student.findOneAndUpdate({_id: req.body._id}, obj)
         .then((updatedStudent)=>{
-            //res.set('updated', 'Updated successfully');
             return res.render('student',{
                 updated:"Data updated successfully"
             });
@@ -213,6 +210,26 @@ const search_student =async (req,res)=>{
         res.send(error.message);
     }
  } 
+
+ // Show Results
+ const results = async (req,res)=>{
+    const _id= req.params.id;
+    try{
+        await Student.find({[_id]: 'checked'})
+        .then((students)=>{
+            res.render(_id, {
+                data: students
+            })
+        })
+        .catch(error=>{
+            res.send(error);
+        })
+
+    }catch(error){
+        res.send(error.message);
+    }
+ }
+
  
  module.exports = {
     register_student,
@@ -220,5 +237,6 @@ const search_student =async (req,res)=>{
     update_student,
     delete_student,
     search_student,
-    student_details
+    student_details,
+    results
  }
