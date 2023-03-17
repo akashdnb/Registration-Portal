@@ -19,17 +19,12 @@ app.get('/', (req, res)=>{
   res.render('index')
 })
 
-app.get('/display', (req, res)=>{
-  res.render('display')
-})
-
-app.get('/resume', (req,res)=>{
-  const filepath = 'https://firebasestorage.googleapis.com/v0/b/indictions2k22.appspot.com/o/'+req.query.path+ '?alt=media';
-  res.redirect(filepath);
-})
-
 app.get('/register', (req, res)=>{
   res.render('register')
+})
+
+app.get('/test', (req, res)=>{
+  res.send('hello from drt!');
 })
 
 app.listen(port, ()=>{

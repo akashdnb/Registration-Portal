@@ -6,6 +6,7 @@
  const register_student = async(req,res)=>{
     
     try{
+        let resume_path = 'https://firebasestorage.googleapis.com/v0/b/indictions2k22.appspot.com/o/'+req.file.filename+'?alt=media';
         const student = new Student({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -22,7 +23,7 @@
             testResult:'',
             pi1Panel:'',
             pi2Panel:'',
-            resume: req.file.filename
+            resume: resume_path
         })
         const filepath= path.join(__dirname, '../../public/studentResume',req.file.filename);
         var options = {
@@ -40,7 +41,8 @@
                     message: "Registered successfully!",
                     data: {
                         firstName: studentData.firstName,
-                        lastName: studentData.lastName
+                        lastName: studentData.lastName,
+                        resume: studentData.resume,
                     }           
                 })
             }).catch(error =>{
