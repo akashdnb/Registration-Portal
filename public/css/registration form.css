@@ -73,8 +73,8 @@ body{
 
 .attend-title{
     color: white;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 200;
     border-bottom: 1px solid white;
 }
 
@@ -94,7 +94,7 @@ body{
 }
 
 .form-submit-btn{
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .form-submit-btn input{
@@ -116,6 +116,7 @@ body{
 
 .info{
     color: red;
+    font-size: 12px;
 }
 
 @media(max-width: 600px){

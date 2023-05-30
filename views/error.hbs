@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Couldn't register</title>
+   </head>
+
+   <style>
+    
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  height: 100vh;
+  background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6);
+  background-size: 100%;
+}
+#error-page{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+}
+#error-page .content{
+  max-width: 600px;
+  text-align: center;
+}
+.content h2.header{
+  font-size: 18vw;
+  line-height: 1em;
+  position: relative;
+}
+.content h2.header:after{
+  position: absolute;
+  content: attr(data-text);
+  top: 0;
+  left: 0;
+  right: 0;
+  background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.25);
+  animation: animate 10s ease-in-out infinite;
+}
+@keyframes animate {
+  0%{
+    background-position: 0 0;
+  }
+  25%{
+    background-position: 100% 0;
+  }
+  50%{
+    background-position: 100% 100%;
+  }
+  75%{
+    background-position: 0% 100%;
+  }
+  100%{
+    background-position: 0% 0%;
+  }
+}
+.content h4{
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #000;
+  font-size: 2em;
+  max-width: 600px;
+  position: relative;
+}
+.content p{
+  font-size: 1.2em;
+  color: #0d0d0d;
+}
+
+   </style>
+   
+
+   <body>
+      <div id="error-page">
+         <div class="content">
+            <h4>Couldn't register!!</h4>
+            <h2>Error code:-</h2><br>
+            <h5 data-text="Opps! Page not found" style="color:red">
+               {{message}}
+            </h5>
+            <br>
+
+            <h2>Need Help?</h2><br>
+            <h5>WhatsApp us</h5>
+            <p>+91 9771574264</p>
+            <br>
+            <h5>Mail us</h5> <p>2021ugee063@gmail.com</p>
+            <br><br>
+
+            <h5>Possible reasons</h5>
+            <ul>
+                <ul>Registration No. already registered</ul>
+                <ul>Mobile No. already registered</ul>
+                <ul>Resume is not in PDF format</ul>
+            </ul>
+            <br>
+            
+            <div class="btns">
+              <input type="button" onclick="location.href='/register';" value="Go to Register" style="margin-right: 10px;"/>
+              <input type="button" onclick="location.href='https://www.driftracingteam.in/';" value="Go to Home" />
+            </div>
+
+         </div>
+      </div>
+   </body>
+</html>

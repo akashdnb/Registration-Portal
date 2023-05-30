@@ -44,12 +44,16 @@
                     registrationNo: studentData.registrationNo,
                 })
             }).catch(error =>{
-                res.send(error.message)
+                res.render('error',{
+                    message: error.message});
+                //res.send(error.message)
+                //console.log(error)
             });
 
             request(options, function (error, response) {
                 if (error){
-                    res.send(error.message);
+                    res.render('error',{
+                        message: error.message});
                     throw new Error(error);
                 }
                 //student.resume= response.name+'?alt=media&token='+response.downloadTokens;
@@ -65,7 +69,8 @@
 
     } catch(error){
         console.log(error);
-        res.status(400).send(error.message);
+        res.render('error',{
+            message: error.message});
     }
  }
 
@@ -99,7 +104,8 @@
         .then((students)=>{
             //res.send(students);
             resObj.data= students;
-            res.render('list', resObj)
+            if(req.isPrivate === true) res.render('editable_list', resObj)
+            else res.render('list', resObj)
         })
         .catch(error=>{
             res.send(error);
@@ -198,9 +204,15 @@ const search_student =async (req,res)=>{
         await Student.find({registrationNo: req.query.registrationNo})
         .then((students)=>{
            // res.send(students);
+           if(req.isPrivate === true){
+            res.render('editable_student', {
+                data: students
+            })
+           }else{
             res.render('student', {
                 data: students
             })
+           }
         })
         .catch(error=>{
             res.send(error);
