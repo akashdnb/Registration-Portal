@@ -16,16 +16,21 @@
         text-align: center;
         padding: 20pt;
     }
+    .search{
+      color: brown;
+      background-color: rgb(2, 114, 212);
+    }
 </style>
 <body>
 
   <h2>Student details</h2>
 
 <!-- Button trigger modal -->
-<div style="text-align:center;">
+<div style="text-align:center; display:block;">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Edit Filters
 </button>
+<button type="button" class="btn btn-primary" onclick="location.href='/list?pass=akash';">Refresh</button>
 </div>
 
 
@@ -114,12 +119,19 @@
 </div>
 
 
-    <div class="search" style="display: flex;"></div>
+    <div class="search" ></div>
       <form action="/list" method="get" style="margin-top: 10pt;">
        <input type="hidden" name="pass", value="akash">
        <input type="text" name="registrationNo" value="{{registrationNo}}" placeholder="registrationNo">
        <button type="submit" >Search</button>
     </form>
+
+     <form action="/list" method="get" style="margin-top: 10pt;">
+       <input type="hidden" name="pass", value="akash">
+       <input type="text" name="phoneNo" value="{{phoneNo}}" placeholder="phoneNo">
+       <button type="submit" >Search</button>
+    </form>
+
     </div>
     
 
