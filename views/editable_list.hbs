@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/Drift_Racing_Team_logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Document</title>
+    <title>*Student list</title>
 </head>
 <style>
     *{
@@ -30,7 +31,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Edit Filters
 </button>
-<button type="button" class="btn btn-primary" onclick="location.href='/list?pass=akash';">Refresh</button>
+<button type="button" class="btn btn-primary" onclick="location.href='/editable_list?pass=akash';">Refresh</button>
 </div>
 
 
@@ -63,6 +64,18 @@
                     <option value="ECE">Electronics and Computational Mechanics</option>
                   </select>
             </div>
+
+            <div class="col-md-6">
+                <label for="select" class="form-label">Intrested In:</label>
+                <select name="interestedIn" class="form-select" aria-label="Default select example">
+                    <option value="{{interestedIn}}">{{interestedIn}}</option>
+                    <option value="">none</option>
+                    <option value="TECHNICAL">TECHNICAL</option>
+                    <option value="CREATIVE">CREATIVE</option>
+                    <option value="WEB TEAM">WEB TEAM</option>
+                  </select>
+            </div>
+
             <div class="col-md-6" style="margin-top: 10dt;">
                 <label for="select" class="form-label">PI-1 Panel</label>
                 <select name="pi1Panel" class="form-select" aria-label="Default select example">

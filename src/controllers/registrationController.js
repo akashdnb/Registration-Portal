@@ -3,16 +3,22 @@
  const path = require('path');
  var request = require('request');
 
+ function trimString(str) {
+    let trimmed = str.replace(/^\s+/, '');
+    trimmed = trimmed.replace(/\s+$/, '');
+    return trimmed;
+  }
+
  const register_student = async(req,res)=>{
     
     try{
         let resume_path = 'https://firebasestorage.googleapis.com/v0/b/indictions2k22.appspot.com/o/'+req.file.filename+'?alt=media';
         const student = new Student({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            registrationNo: req.body.registrationNo,
-            phoneNo: req.body.phoneNo,
-            email: req.body.email,
+            firstName: trimString(req.body.firstName),
+            lastName: trimString(req.body.lastName),
+            registrationNo: trimString(req.body.registrationNo),
+            phoneNo: trimString(req.body.phoneNo),
+            email: trimString(req.body.email),
             branch: req.body.branch,
             interestedIn: req.body.interestedIn,
             otherTeams: req.body.otherTeams,
@@ -25,6 +31,7 @@
             pi2Panel:'',
             resume: resume_path
         })
+
         const filepath= path.join(__dirname, '../../public/studentResume',req.file.filename);
         var options = {
             'method': 'POST',
