@@ -170,7 +170,7 @@
 
       {{#each data}} 
       <tr>
-        <th scope="row">{{@index}}</th>
+        <th scope="row">{{'incrementIndex' @index}}</th>
         <td style="max-width: 5%;"> {{firstName}} {{lastName}}</td>
         <td style="max-width: 5%;"><a href="/editable_student?pass=akash&registrationNo={{registrationNo}}" target="_blank" >{{registrationNo}}</a></td>
         <td style="max-width: 5%;"> {{phoneNo}}</td>

@@ -15,10 +15,12 @@ const port= process.env.PORT || 3000;
 //app.set('views', path.join(__dirname))
 app.set('view engine', 'hbs');
 
+hbs.registerHelper('incrementIndex', (index) => index + 1);
+
 app.use('/', studentRoute);
 
 app.get('/', (req, res)=>{
-  res.render('index')
+  res.redirect('/register');
 })
 
 app.get('/register', (req, res)=>{
@@ -39,7 +41,7 @@ app.get('/test', (req, res)=>{
 })
 
 cron.schedule('*/14 * * * *', () => {
-  //console.log('running a task every two minutes');
+  //console.log('running a task every 14 minutes');
   try {
     request.get('https://inductions2022.onrender.com/test', (error, response, body)=>{
       console.log(body);
