@@ -24,7 +24,8 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/register', (req, res)=>{
-  const registrationDeadline = new Date('2023-06-12T11:59:59');
+
+  const registrationDeadline = new Date(process.env.REGISTRATION_DEADLINE);
   const currentTime = new Date();
 
   if (currentTime > registrationDeadline) {

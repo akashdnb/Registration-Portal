@@ -2,7 +2,7 @@ const express = require('express');
 const route = express();
 const multer = require('multer');
 const path= require('path');
-const maxSize = 1024*1024;
+const maxSize = (1024*1024)*2;
 
 route.use(express.json());
 route.use(express.urlencoded({
