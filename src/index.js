@@ -22,6 +22,15 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/register', (req, res)=>{
+  const registrationDeadline = new Date('2023-06-12T11:59:59');
+  const currentTime = new Date();
+
+  if (currentTime > registrationDeadline) {
+      res.render('registration_closed', {
+          message: 'Registration is closed.'
+      });
+      return;
+  }
   res.render('register')
 })
 

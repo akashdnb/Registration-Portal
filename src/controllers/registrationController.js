@@ -16,7 +16,7 @@
         const student = new Student({
             firstName: trimString(req.body.firstName),
             lastName: trimString(req.body.lastName),
-            registrationNo: trimString(req.body.registrationNo),
+            registrationNo: (trimString(req.body.registrationNo)).toUpperCase(),
             phoneNo: trimString(req.body.phoneNo),
             email: trimString(req.body.email),
             branch: req.body.branch,
