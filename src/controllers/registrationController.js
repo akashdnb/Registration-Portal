@@ -10,6 +10,12 @@
   }
 
  const register_student = async(req,res)=>{
+
+    if (req.fileValidationError) {
+        return res.render('error',{
+            message: req.fileValidationError});
+        // return res.status(400).json({ error: req.fileValidationError });
+      }
     
     try{
         let resume_path = 'https://firebasestorage.googleapis.com/v0/b/indictions2k22.appspot.com/o/'+req.file.filename+'?alt=media';
@@ -59,9 +65,8 @@
 
             request(options, function (error, response) {
                 if (error){
-                    res.render('error',{
+                   return res.render('error',{
                         message: error.message});
-                    throw new Error(error);
                 }
                 //student.resume= response.name+'?alt=media&token='+response.downloadTokens;
                 try{

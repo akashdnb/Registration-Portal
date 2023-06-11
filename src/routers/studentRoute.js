@@ -28,9 +28,17 @@ const storage = multer.diskStorage({
     }
 })
 
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype !== 'application/pdf') {
+      req.fileValidationError = 'CV/Resume should only be in PDF format!!';
+    }
+    cb(null, file.mimetype === 'application/pdf');
+  };
+
 const upload = multer({
     storage: storage,
-    limits: { fileSize: maxSize }
+    limits: { fileSize: maxSize },
+    fileFilter: fileFilter
 });
 
 // Middleware function to set the boolean value for private access
