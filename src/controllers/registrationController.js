@@ -101,6 +101,8 @@
         else delete obj.registrationNo;
         if(req.query.branch && req.query.branch!=='') resObj.branch= req.query.branch;
         else delete obj.branch
+        if(req.query.interestedIn && req.query.interestedIn!=='') resObj.interestedIn= req.query.interestedIn;
+        else delete obj.interestedIn
         if(req.query.pi1 && req.query.pi1!=='') resObj.pi1= req.query.pi1;
         else delete obj.pi1
         if(req.query.pi2 && req.query.pi2!=='') resObj.pi2= req.query.pi2;

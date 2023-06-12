@@ -47,7 +47,7 @@
       </div>
       <div class="modal-body">
         <section>
-          <form action="/list" method="get">
+          <form action="/editable_list" method="get">
           <input type="hidden" name="pass", value="akash">
           <div class="col-md-6">
                 <label for="select" class="form-label">Branch: </label>
@@ -61,7 +61,7 @@
                     <option value="CE">Civil Engineering</option>
                     <option value="MME">Metallurgical Engineering</option>
                     <option value="PI">Production Engineering</option>
-                    <option value="ECE">Electronics and Computational Mechanics</option>
+                    <option value="ECM">Engineering and Computational Mechanics</option>
                   </select>
             </div>
 
@@ -133,13 +133,13 @@
 
 
     <div class="search" ></div>
-      <form action="/list" method="get" style="margin-top: 10pt;">
+      <form action="/editable_list" method="get" style="margin-top: 10pt;">
        <input type="hidden" name="pass", value="akash">
        <input type="text" name="registrationNo" value="{{registrationNo}}" placeholder="registrationNo">
        <button type="submit" >Search</button>
     </form>
 
-     <form action="/list" method="get" style="margin-top: 10pt;">
+     <form action="/editable_list" method="get" style="margin-top: 10pt;">
        <input type="hidden" name="pass", value="akash">
        <input type="text" name="phoneNo" value="{{phoneNo}}" placeholder="phoneNo">
        <button type="submit" >Search</button>
